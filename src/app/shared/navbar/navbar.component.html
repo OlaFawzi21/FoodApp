@@ -1,0 +1,23 @@
+<section
+  class="nav p-3 my-4 d-flex gap-5 justify-content-center align-items-center second-color"
+>
+  <div class="position-relative w-75">
+    <input
+      type="search"
+      name="search"
+      class="form-control ps-5"
+      placeholder="Search here"
+    />
+    <i class="fa-solid fa-magnifying-glass position-absolute"></i>
+  </div>
+  <div>
+    <img src="../../../assets/images/avatar.png" alt="avatar" />
+    <span class="ms-3 fw-bold">{{ username }}</span>
+  </div>
+  <a (click)="logout()">
+    <i class="fa-solid fa-arrow-right-from-bracket cursor-pointer" ></i>
+
+  </a>
+    
+  <i class="fa-solid fa-bell"></i>
+</section>

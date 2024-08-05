@@ -1,0 +1,28 @@
+.side-bar {
+    border-top-right-radius: 6rem;
+
+    .menu {
+        .item {
+            color: #b1b3bb;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+
+            &:hover {
+                background-color: rgba(0, 146, 77, 0.1);
+                color: #fff;
+                border-left: 5px solid #009247;
+            }
+        }
+
+        .active {
+            background-color: rgba(0, 146, 77, 0.1);
+            color: #fff;
+            border-left: 5px solid #009247;
+        }
+    }
+
+}

@@ -1,0 +1,59 @@
+<div class="category">
+  <div class="container">
+    <div
+      class="bg-second-color head row justify-content-around align-items-center rounded-4 py-3"
+    >
+      <div class="col-6">
+        <span class="fs-1 fw-bold">Categories </span>
+        <span class="fs-1">Item</span>
+        <p class="fs-5">
+          You can now add your items that any user can order it from the
+          Application and you can edit
+        </p>
+      </div>
+      <div class="col-3 text-end">
+        <img
+          class="w-100"
+          src="../../../../../assets/images/big-avatar.svg"
+          alt="home-img"
+        />
+      </div>
+    </div>
+
+    <div class="row justify-content-between my-4">
+      <div class="col-md-4">
+        <h4>Categories Table Details</h4>
+        <p>You can check all details</p>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-main w- py-2">Add New Category</button>
+      </div>
+    </div>
+
+    <div class="table-responsive table-scroll">
+      <table class="table table-striped">
+        <thead>
+          <th class="p-3">Name</th>
+          <th class="p-3">Creation Date</th>
+          <th class="p-3">Modification Date</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <mat-paginator
+      #paginator
+      class="demo-paginator"
+      (page)="handlePageEvent($event)"
+      [length]="length"
+      [pageSize]="pageSize"
+      [disabled]="disabled"
+      [showFirstLastButtons]="showFirstLastButtons"
+      [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+      [hidePageSize]="hidePageSize"
+      [pageIndex]="pageIndex"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </div>
+</div>

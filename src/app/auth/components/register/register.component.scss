@@ -1,0 +1,27 @@
+
+.mb-2r {
+  margin-bottom: 2rem !important;
+}
+
+.drop-photo{
+  width: 150px;
+  right: 50px;
+  top: 50px;
+}
+
+ngx-dropzone{
+  height: 150px !important;
+  border-radius: 30px!important;
+  padding-left: 4px;
+}
+
+ngx-dropzone-preview{
+  height:100%!important;
+  min-height: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+}
+
+ngx-dropzone-image-preview{
+  margin: 0 !important;
+}

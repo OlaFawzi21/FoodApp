@@ -1,0 +1,23 @@
+<section class="bg-main-color vh-100 side-bar overflow-hidden">
+  <div class="text-center">
+    <img
+      class="m-5"
+      src="../../../assets/images/logo-without-words.png"
+      alt="logo"
+    />
+  </div>
+  <div class="menu">
+    <ng-container *ngFor="let item of menu">
+      <a
+        *ngIf="item.isActive"
+        class="item py-3 px-4"
+        [routerLink]="item.link"
+        routerLinkActive="active"
+        (click)="item.title === 'Logout' ? logout() : null"
+      >
+        <span><i [class]="item.icon"></i></span>
+        <span>{{ item.title }}</span>
+      </a>
+    </ng-container>
+  </div>
+</section>
