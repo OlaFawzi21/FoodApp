@@ -1,0 +1,134 @@
+<section>
+  <div class="container">
+    <div
+      class="fill-recipe row justify-content-evenly align-items-center rounded-4 my-3 py-5"
+    >
+      <div class="col-6">
+        <span class="fs-3">
+          <span *ngIf="id && isViewMode">View</span>
+          <span>{{ id && !isViewMode ? "Edit" : "Fill"}}</span>
+          the
+        </span>
+        <span class="fs-3 fw-bold second-color">Recipes !</span>
+        <p>
+          you can now fill the meals easily using the table and form , click
+          here and sill it with the table !
+        </p>
+      </div>
+      <div class="col-3">
+        <button
+          class="btn-main fw-bold w-100"
+          routerLink="/dashboard/admin/recipe"
+        >
+          All Recipes
+          <span class="ms-2"><i class="fa-solid fa-arrow-right-long"></i></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <form
+    [formGroup]="formRecipe"
+    class="d-flex flex-column align-items-center justify-content-center my-5"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="w-75 row gap-2 justify-content-center">
+      <div class="row p-0">
+        <mat-form-field class="col-6">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" placeholder="Item Name" />
+          <mat-error *ngIf="formRecipe.get('name')?.hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-6">
+          <mat-label>Price</mat-label>
+          <input
+            type="number"
+            matInput
+            formControlName="price"
+            placeholder="Price"
+          />
+          <mat-error *ngIf="formRecipe.get('price')?.hasError('required')">
+            Price is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="formRecipe.get('price')?.hasError('min')">
+            Price must be greater than or equal to 0
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field class="col-12">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          placeholder="Description"
+        ></textarea>
+        <mat-error *ngIf="formRecipe.get('description')?.hasError('required')">
+          Description is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <div class="row p-0">
+        <mat-form-field class="col-6">
+          <mat-label>Category</mat-label>
+          <mat-select multiple formControlName="categoriesIds">
+            <mat-option *ngFor="let cat of categories" [value]="cat.id">
+              {{ cat.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="formRecipe.get('categoriesIds')?.hasError('required')"
+          >
+            Category is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-6">
+          <mat-label>Tag</mat-label>
+          <mat-select formControlName="tagId">
+            <mat-option *ngFor="let tag of tags" [value]="tag.id">
+              {{ tag.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="formRecipe.get('tagId')?.hasError('required')">
+            Tag is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="mb-4">
+        <ngx-dropzone (change)="onSelect($event)" [disabled]="isViewMode">
+          <ngx-dropzone-label>
+            <p class="second-color fs-4">
+              <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            </p>
+            Drag & Drop or
+            <span class="second-color">Choose a Item Image</span> to Upload
+          </ngx-dropzone-label>
+          <ngx-dropzone-image-preview
+            ngProjectAs="ngx-dropzone-preview"
+            *ngFor="let f of files"
+            [file]="f"
+            [removable]="true"
+            (removed)="onRemove(f)"
+          >
+            <ngx-dropzone-label></ngx-dropzone-label>
+          </ngx-dropzone-image-preview>
+        </ngx-dropzone>
+      </div>
+
+      <div class="text-end">
+        <button
+          class="btn btn-main fw-bold w-25 py-2"
+          type="submit"
+          [disabled]="formRecipe.invalid || isViewMode"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</section>

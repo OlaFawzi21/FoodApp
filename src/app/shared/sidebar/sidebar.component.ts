@@ -29,9 +29,15 @@ export class SidebarComponent {
       isActive: this.isAdmin()
     },
     {
+      title: 'Categories',
+      icon: 'fa-regular fa-calendar-days',
+      link: '/dashboard/admin/categories',
+      isActive: this.isAdmin()
+    },
+    {
       title: 'Recipes',
       icon: 'fa-solid fa-vector-square',
-      link: '/dashboard/recipes',
+      link: '/dashboard/admin/recipe',
       isActive: this.isAdmin()
     },
     {
@@ -45,12 +51,6 @@ export class SidebarComponent {
       icon: 'fa-solid fa-vector-square',
       link: '/dashboard/recipes',
       isActive: this.isUser()
-    },
-    {
-      title: 'Categories',
-      icon: 'fa-regular fa-calendar-days',
-      link: '/dashboard/admin/categories',
-      isActive: this.isAdmin()
     },
     {
       title: 'Change Password',

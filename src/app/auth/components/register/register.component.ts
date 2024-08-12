@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss']
 } )
 export class RegisterComponent {
-  loginForm: FormGroup;
+  registerForm: FormGroup;
   errMsg: string;
   errMsgControl: any;
   imgSource: any;
@@ -23,7 +23,7 @@ export class RegisterComponent {
   code: string;
 
   constructor( private _AuthService: AuthService, private toastr: ToastrService, private router: Router, public dialog: MatDialog ) {
-    this.loginForm = new FormGroup( {
+    this.registerForm = new FormGroup( {
       userName: new FormControl( '', [Validators.required, Validators.minLength( 4 )] ),
       country: new FormControl( '', [Validators.required] ),
       phoneNumber: new FormControl( '', [Validators.required, Validators.pattern( '^01[0125][0-9]{8}$' )] ),
@@ -31,11 +31,30 @@ export class RegisterComponent {
       password: new FormControl( '', [Validators.required, Validators.minLength( 6 )] ),
       confirmPassword: new FormControl( '', [Validators.required] )
     } );
+
+    this.registerForm.valueChanges.subscribe(() => {
+      this.checkPasswords();
+    });
+      
   }
+
+
+
+checkPasswords() {
+  const password = this.registerForm.get('password')?.value;
+  const confirmPassword = this.registerForm.get('confirmPassword')?.value;
+
+  if (password !== confirmPassword) {
+    this.registerForm.get('confirmPassword')?.setErrors({ passwordsDoNotMatch: true });
+  } else {
+    this.registerForm.get('confirmPassword')?.setErrors(null);
+  }
+}
+  
 
   openDialog(): void {
     const dialogRef = this.dialog.open( VerifyComponent, {
-      data: { email: this.loginForm.value.email, code: this.code },
+      data: { email: this.registerForm.value.email, code: this.code },
     } );
 
     dialogRef.afterClosed().subscribe( result => {
@@ -111,4 +130,5 @@ export class RegisterComponent {
     console.log( event );
     this.files.splice( this.files.indexOf( event ), 1 );
   }
+
 }

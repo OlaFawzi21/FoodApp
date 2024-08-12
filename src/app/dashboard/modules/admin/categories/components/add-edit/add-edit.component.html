@@ -1,0 +1,20 @@
+<div style="width: 500px" class="py-4">
+  <div mat-dialog-content>
+    <p>{{data.action | titlecase}} Category</p>
+    <mat-form-field class="w-100">
+      <mat-label>Category Name</mat-label>
+      <input matInput [(ngModel)]="data.name" [disabled]="data.action === 'view'"/>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="justify-content-end px-4">
+    <button mat-button (click)="onNoClick()">Close</button>
+    <button
+      mat-button
+      [mat-dialog-close]="data.name"
+      *ngIf="data.action !== 'view'"
+      cdkFocusInitial
+    >
+      Ok
+    </button>
+  </div>
+</div>

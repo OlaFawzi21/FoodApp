@@ -1,11 +1,15 @@
+
 <section class="container-fluid">
   <div class="row">
-    <div class="col-2 p-0">
+    <div [ngClass]="{'col-1': isSidebarCollapsed, 'col-2': !isSidebarCollapsed}" class="p-0">
       <app-sidebar></app-sidebar>
     </div>
-    <div class="col-10">
+    <div [ngClass]="{'col-11': isSidebarCollapsed, 'col-10': !isSidebarCollapsed}">
       <app-navbar></app-navbar>
       <router-outlet></router-outlet>
     </div>
   </div>
 </section>
+
+<!-- <button (click)="toggleSidebar()">Toggle Sidebar</button> -->
+

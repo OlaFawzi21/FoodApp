@@ -45,19 +45,19 @@ a {
 }
 
 .main-color {
-  color: #1f263e;
+  color: #1f263e !important;
 }
 
 .second-color {
-  color: #009247;
+  color: #009247 !important;
 }
 
 .bg-main-color {
-  background-color: #1f263e;
+  background-color: #1f263e !important;
 }
 
 .bg-second-color {
-  background-color: #009247;
+  background-color: #009247 !important;
 }
 
 .btn-main {
@@ -82,6 +82,57 @@ a {
   cursor: pointer;
 }
 
+// tables
+
+.head {
+  color: #fff !important;
+
+  span:nth-of-type(2) {
+    color: #DFE0E0 !important;
+  }
+}
+
+.table-responsive {
+  .table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    overflow: hidden !important;
+
+
+    thead {
+      background-color: #E2E5EB !important;
+      color: #333 !important;
+      border-radius: 15px !important;
+      overflow: hidden !important;
+
+      th:first-child {
+        border-radius: 10px 0 0 10px;
+      }
+
+      th:last-child {
+        border-radius: 0 10px 10px 0;
+      }
+    }
+
+    th {
+      padding: 20px 15px !important;
+    }
+
+    td,
+    th {
+      width: 300px !important;
+      vertical-align: middle !important;
+      text-align: center !important;
+    }
+
+  }
+    
+}
+
+.table>tbody>tr:nth-child(even)>td,
+.table>tbody>tr:nth-child(even)>th {
+  background-color: #F8F9FB;
+}
 // auth global styles
 
 .auth {

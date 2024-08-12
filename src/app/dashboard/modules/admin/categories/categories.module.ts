@@ -4,16 +4,18 @@ import { CommonModule } from '@angular/common';
 import { CategoriesRoutingModule } from './categories-routing.module';
 import { CategoriesComponent } from './categories.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AddEditComponent } from './components/add-edit/add-edit.component';
 
 
 @NgModule({
   declarations: [
-    CategoriesComponent
+    CategoriesComponent,
+    AddEditComponent
   ],
   imports: [
     CommonModule,
     CategoriesRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class CategoriesModule { }

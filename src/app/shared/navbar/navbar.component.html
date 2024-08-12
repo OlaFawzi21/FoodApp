@@ -14,10 +14,22 @@
     <img src="../../../assets/images/avatar.png" alt="avatar" />
     <span class="ms-3 fw-bold">{{ username }}</span>
   </div>
-  <a (click)="logout()">
-    <i class="fa-solid fa-arrow-right-from-bracket cursor-pointer" ></i>
 
-  </a>
-    
-  <i class="fa-solid fa-bell"></i>
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with a menu"
+  >
+    <mat-icon>arrow_drop_down_circle</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon class="second-color">account_circle</mat-icon>
+      <span class="second-color">Profile</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon class="second-color">logout</mat-icon>
+      <span class="second-color">Logout</span>
+    </button>
+  </mat-menu>
 </section>

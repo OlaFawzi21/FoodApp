@@ -5,22 +5,22 @@ import { AuthGuard } from './core/Guards/auth.guard';
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: () => import( './auth/auth.module' ).then( ( m ) => m.AuthModule ),
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'dashboard',
-    canActivate: [AuthGuard]
-    ,
+    canActivate: [AuthGuard],
     loadChildren: () =>
-      import( './dashboard/dashboard.module' ).then( ( m ) => m.DashboardModule ),
+      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
-  { path: '**', redirectTo: 'auth', pathMatch: 'full'},
+  { path: '**', redirectTo: 'auth', pathMatch: 'full' },
 ];
 
-@NgModule( {
-  imports: [RouterModule.forRoot( routes )],
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+  ],
   exports: [RouterModule],
-},
-)
-export class AppRoutingModule { }
+})
+export class AppRoutingModule {}

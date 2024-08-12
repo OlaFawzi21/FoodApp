@@ -17,7 +17,7 @@
           </div>
 
           <div class="drop-photo position-absolute">
-            <ngx-dropzone (change)="onSelect($event)">
+            <ngx-dropzone (change)="onSelect($event)" [multiple]="false">
               <ngx-dropzone-label>Drop it!</ngx-dropzone-label>
               <ngx-dropzone-image-preview
                 ngProjectAs="ngx-dropzone-preview"
@@ -32,14 +32,14 @@
           </div>
 
           <form
-            [formGroup]="loginForm"
-            (ngSubmit)="onRegister(loginForm)"
+            [formGroup]="registerForm"
+            (ngSubmit)="onRegister(registerForm)"
             class="row"
           >
             <div class="col-6 mb-2r position-relative">
               <div class="input-group">
                 <span class="input-group-text" id="basic-addon1">
-                  <i class="fa-solid fa-mobile-screen-button"></i>
+                  <i class="fa-solid fa-user"></i>
                 </span>
                 <input
                   id="userName"
@@ -52,15 +52,15 @@
               </div>
               <div
                 *ngIf="
-                  loginForm.get('userName')?.invalid &&
-                  loginForm.get('userName')?.touched
+                  registerForm.get('userName')?.invalid &&
+                  registerForm.get('userName')?.touched
                 "
                 class="text-danger position-absolute"
               >
-                <small *ngIf="loginForm.get('userName')?.errors?.['required']">
+                <small *ngIf="registerForm.get('userName')?.errors?.['required']">
                   UserName is required.
                 </small>
-                <small *ngIf="loginForm.get('userName')?.errors?.['minlength']">
+                <small *ngIf="registerForm.get('userName')?.errors?.['minlength']">
                   UserName must be at least 4 characters long.
                 </small>
               </div>
@@ -69,7 +69,7 @@
             <div class="col-6 mb-2r position-relative">
               <div class="input-group">
                 <span class="input-group-text" id="basic-addon1">
-                  <i class="fa-solid fa-mobile-screen-button"></i>
+                  <i class="fa-solid fa-envelope"></i>
                 </span>
                 <input
                   id="email"
@@ -82,15 +82,15 @@
               </div>
               <div
                 *ngIf="
-                  loginForm.get('email')?.invalid &&
-                  loginForm.get('email')?.touched
+                  registerForm.get('email')?.invalid &&
+                  registerForm.get('email')?.touched
                 "
                 class="text-danger position-absolute"
               >
-                <small *ngIf="loginForm.get('email')?.errors?.['required']">
+                <small *ngIf="registerForm.get('email')?.errors?.['required']">
                   Email is required.
                 </small>
-                <small *ngIf="loginForm.get('email')?.errors?.['email']">
+                <small *ngIf="registerForm.get('email')?.errors?.['email']">
                   Enter a valid email.
                 </small>
               </div>
@@ -99,7 +99,7 @@
             <div class="col-6 mb-2r position-relative">
               <div class="input-group">
                 <span class="input-group-text" id="basic-addon1">
-                  <i class="fa-solid fa-mobile-screen-button"></i>
+                  <i class="fa-solid fa-earth-asia"></i>
                 </span>
                 <input
                   id="country"
@@ -112,12 +112,12 @@
               </div>
               <div
                 *ngIf="
-                  loginForm.get('country')?.invalid &&
-                  loginForm.get('country')?.touched
+                  registerForm.get('country')?.invalid &&
+                  registerForm.get('country')?.touched
                 "
                 class="text-danger position-absolute"
               >
-                <small *ngIf="loginForm.get('country')?.errors?.['required']">
+                <small *ngIf="registerForm.get('country')?.errors?.['required']">
                   Country is required.
                 </small>
               </div>
@@ -139,18 +139,18 @@
               </div>
               <div
                 *ngIf="
-                  loginForm.get('phoneNumber')?.invalid &&
-                  loginForm.get('phoneNumber')?.touched
+                  registerForm.get('phoneNumber')?.invalid &&
+                  registerForm.get('phoneNumber')?.touched
                 "
                 class="text-danger position-absolute"
               >
                 <small
-                  *ngIf="loginForm.get('phoneNumber')?.errors?.['required']"
+                  *ngIf="registerForm.get('phoneNumber')?.errors?.['required']"
                 >
                   Phone Number is required.
                 </small>
                 <small
-                  *ngIf="loginForm.get('phoneNumber')?.errors?.['pattern']"
+                  *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern']"
                 >
                   Phone Number is invalid.
                 </small>
@@ -180,15 +180,15 @@
               </div>
               <div
                 *ngIf="
-                  loginForm.get('password')?.invalid &&
-                  loginForm.get('password')?.touched
+                  registerForm.get('password')?.invalid &&
+                  registerForm.get('password')?.touched
                 "
                 class="text-danger position-absolute"
               >
-                <small *ngIf="loginForm.get('password')?.errors?.['required']">
+                <small *ngIf="registerForm.get('password')?.errors?.['required']">
                   Password is required.
                 </small>
-                <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+                <small *ngIf="registerForm.get('password')?.errors?.['minlength']">
                   Password must be at least 6 characters long.
                 </small>
               </div>
@@ -206,32 +206,38 @@
                   class="form-control p-2"
                   aria-describedby="basic-addon1"
                   placeholder="Confirm Password"
+                 
                 />
-                <a class="input-group-text" (click)="isHideConfirm = !isHideConfirm">
+                <a
+                  class="input-group-text"
+                  (click)="isHideConfirm = !isHideConfirm"
+                >
                   <i
                     [class]="
-                    isHideConfirm ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'
+                      isHideConfirm
+                        ? 'fa-regular fa-eye-slash'
+                        : 'fa-regular fa-eye'
                     "
                   ></i>
                 </a>
               </div>
               <div
                 *ngIf="
-                  loginForm.get('confirmPassword')?.invalid &&
-                  loginForm.get('confirmPassword')?.touched
+                  registerForm.get('confirmPassword')?.invalid &&
+                  registerForm.get('confirmPassword')?.touched
                 "
                 class="text-danger position-absolute"
               >
                 <small
-                  *ngIf="loginForm.get('confirmPassword')?.errors?.['required']"
+                  *ngIf="registerForm.get('confirmPassword')?.errors?.['required']"
                 >
                   Confirm Password is required.
                 </small>
-                <!-- <small
-                  *ngIf="loginForm.get('confirmPassword')?.errors?.['pattern']"
+                <small
+                  *ngIf="registerForm.get('confirmPassword')?.hasError('passwordsDoNotMatch')"
                 >
                   Confirm Password don't match.
-                </small> -->
+                </small>
               </div>
             </div>
 
@@ -249,7 +255,7 @@
             <button
               type="submit"
               class="btn btn-main w-100 mt-4"
-              [disabled]="loginForm.invalid || isLoading"
+              [disabled]="registerForm.invalid || isLoading"
             >
               Register
             </button>

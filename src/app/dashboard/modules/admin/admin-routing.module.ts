@@ -10,6 +10,7 @@ const routes: Routes = [
         loadChildren: () =>
           import('./categories/categories.module').then((m) => m.CategoriesModule),
       },
+      { path: 'recipe', loadChildren: () => import('./recipe/recipe.module').then(m => m.RecipeModule) },
   ]},
 ];
 

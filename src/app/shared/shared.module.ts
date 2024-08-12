@@ -8,14 +8,22 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 import { NgxDropzoneModule } from 'ngx-dropzone';
-import { FormsModule } from '@angular/forms';
-@NgModule( {
+import { DeleteComponent } from './delete/delete.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+
+@NgModule({
   declarations: [
     SharedComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    DeleteComponent,
+    SpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -26,19 +34,28 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatButtonModule,
     FormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatMenuModule,
+    MatIconModule,
+    MatSelectModule,
+    ReactiveFormsModule,
   ],
   exports: [
     NavbarComponent,
     SidebarComponent,
+    DeleteComponent,
     RouterModule,
     NgxDropzoneModule,
+    FormsModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    FormsModule,
-    MatPaginatorModule
-  ]
-} )
-export class SharedModule { }
+    MatPaginatorModule,
+    MatMenuModule,
+    MatIconModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+  ],
+})
+export class SharedModule {}
