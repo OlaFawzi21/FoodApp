@@ -30,14 +30,14 @@ $PeachyPupBakery-theme: mat.define-light-theme((color: (primary: $PeachyPupBaker
 @include mat.all-component-themes($PeachyPupBakery-theme);
 
 html,
-body {
+body,
+app-root {
   height: 100%;
-}
-
-body {
   margin: 0;
   font-family: "inter", sans-serif;
+  scroll-snap-type: mandatory;
 }
+
 
 a {
   color: inherit;
@@ -78,6 +78,25 @@ a {
   right: 10px;
 }
 
+.btn-cancel {
+  background-color: #009247;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: all .4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.184) 0px 0px 3px 0px;
+  top: 20px;
+  right: 20px;
+
+  &:is(:hover, :active) {
+    background-color: #01783a;
+  }
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -85,7 +104,12 @@ a {
 // tables
 
 .head {
-  color: #fff !important;
+  color: #fff;
+  background-image: url(assets/images/header-bg-svg.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
 
   span:nth-of-type(2) {
     color: #DFE0E0 !important;
@@ -96,14 +120,14 @@ a {
   .table {
     width: 100% !important;
     border-collapse: collapse !important;
-    overflow: hidden !important;
+    overflow-x: auto !important;
 
 
     thead {
       background-color: #E2E5EB !important;
       color: #333 !important;
       border-radius: 15px !important;
-      overflow: hidden !important;
+      overflow-x: auto !important;
 
       th:first-child {
         border-radius: 10px 0 0 10px;
@@ -126,13 +150,14 @@ a {
     }
 
   }
-    
+
 }
 
 .table>tbody>tr:nth-child(even)>td,
 .table>tbody>tr:nth-child(even)>th {
   background-color: #F8F9FB;
 }
+
 // auth global styles
 
 .auth {

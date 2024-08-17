@@ -1,74 +1,82 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { ChangePassService } from './../services/changePass.service';
 
 interface IMenu {
-  title: string,
-  icon: string,
-  link: string,
-  isActive: boolean
+  title: string;
+  icon: string;
+  link?: string;
+  isActive: boolean;
+  action?: string;
 }
-@Component( {
+@Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
-} )
-
-
+  styleUrls: ['./sidebar.component.scss'],
+})
 export class SidebarComponent {
+  @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  toggler: boolean = false;
+
+  sendData() {
+    this.toggler = !this.toggler;
+    this.toggle.emit(this.toggler);
+  }
+
   menu: IMenu[] = [
     {
       title: 'Home',
       icon: 'fa-solid fa-house',
       link: '/dashboard/home',
-      isActive: true
+      isActive: true,
     },
     {
       title: 'Users',
       icon: 'fa-solid fa-user-group',
-      link: '/dashboard/users',
-      isActive: this.isAdmin()
+      link: '/dashboard/admin/users',
+      isActive: this.isAdmin(),
     },
     {
       title: 'Categories',
       icon: 'fa-regular fa-calendar-days',
       link: '/dashboard/admin/categories',
-      isActive: this.isAdmin()
+      isActive: this.isAdmin(),
     },
     {
       title: 'Recipes',
       icon: 'fa-solid fa-vector-square',
       link: '/dashboard/admin/recipe',
-      isActive: this.isAdmin()
-    },
-    {
-      title: 'Favorites',
-      icon: 'fa-solid fa-heart',
-      link: '1',
-      isActive: this.isUser()
+      isActive: this.isAdmin(),
     },
     {
       title: 'User Recipes',
       icon: 'fa-solid fa-vector-square',
-      link: '/dashboard/recipes',
-      isActive: this.isUser()
+      link: '/dashboard/user/userRecipe',
+      isActive: this.isUser(),
+    },
+    {
+      title: 'Favorites',
+      icon: 'fa-solid fa-heart',
+      link: '/dashboard/user/fav',
+      isActive: this.isUser(),
     },
     {
       title: 'Change Password',
       icon: 'fa-solid fa-unlock-keyhole',
-      link: '/dashboard/changePassword',
-      isActive: true
-    },
-    {
-      title: 'Logout',
-      icon: 'fa-solid fa-arrow-right-from-bracket',
-      link: '1',
-      isActive: true
+      isActive: true,
+      action: 'changePass',
     },
   ];
 
-  constructor( private _AuthService: AuthService ) { }
-  ngOnInit() {
+  constructor(
+    private _AuthService: AuthService,
+    private changePassService: ChangePassService
+  ) {}
+  ngOnInit() {}
 
+  changePass() {
+    this.changePassService.openDialog();
   }
 
   isAdmin() {
@@ -79,7 +87,9 @@ export class SidebarComponent {
     return this._AuthService.role == 'SystemUser' ? true : false;
   }
 
-  logout() {
-    this._AuthService.logout();
+  handleClick(action: string): void {
+    if (action === 'changePass') {
+      this.changePass();
+    }
   }
 }

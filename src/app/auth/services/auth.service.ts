@@ -14,7 +14,7 @@ import { Verify } from '../interfaces/verify';
 export class AuthService {
 
   role: string | null;
-  constructor( private _HttpClient: HttpClient, private _Router: Router, private toastr: ToastrService ) {
+  constructor( private _HttpClient: HttpClient) {
     if ( localStorage.getItem( 'userToken' ) !== null ) {
       this.getProfile();
     }
@@ -58,14 +58,5 @@ export class AuthService {
 
   onResetPassword(data:ResetPassword ): Observable<any> {
     return this._HttpClient.post( 'Users/Reset', data );
-  }
-
-  logout() {
-    localStorage.removeItem( 'userToken' );
-    localStorage.removeItem( 'userEmail' );
-    localStorage.removeItem( 'userName' );
-    localStorage.removeItem( 'role' );
-    this.toastr.success( 'Logout Successfully!', 'Success' );
-    this._Router.navigate( ['/auth'] );
   }
 }

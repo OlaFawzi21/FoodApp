@@ -4,14 +4,28 @@ import { AdminComponent } from './admin.component';
 
 const routes: Routes = [
   {
-    path: '', component: AdminComponent, children: [
+    path: '',
+    component: AdminComponent,
+    children: [
       {
         path: 'categories',
         loadChildren: () =>
-          import('./categories/categories.module').then((m) => m.CategoriesModule),
+          import('./categories/categories.module').then(
+            (m) => m.CategoriesModule
+          ),
       },
-      { path: 'recipe', loadChildren: () => import('./recipe/recipe.module').then(m => m.RecipeModule) },
-  ]},
+      {
+        path: 'recipe',
+        loadChildren: () =>
+          import('./recipe/recipe.module').then((m) => m.RecipeModule),
+      },
+      {
+        path: 'users',
+        loadChildren: () =>
+          import('./users/users.module').then((m) => m.UsersModule),
+      },
+    ],
+  },
 ];
 
 @NgModule({

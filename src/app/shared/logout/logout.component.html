@@ -1,0 +1,23 @@
+<div style="width: 500px" class="py-4 position-relative">
+  <div mat-dialog-content  class="text-center">
+    <h4>Are You sure want to logout?</h4>
+    <mat-icon matSuffix class="text-danger font-big">sentiment_dissatisfied</mat-icon>
+  </div>
+  <div mat-dialog-actions class="justify-content-center px-4">
+    <button
+      class="bg-danger text-white py-4 w-25 mb-2"
+      mat-button
+      (click)="onNoClick()"
+    >
+      NO
+    </button>
+    <button
+      class="btn btn-main py-4 w-25 mb-2"
+      mat-button
+      [mat-dialog-close]="data"
+      cdkFocusInitial
+    >
+      Yes
+    </button>
+  </div>
+</div>

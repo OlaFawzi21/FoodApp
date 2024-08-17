@@ -121,10 +121,6 @@ export class AddEditComponent {
         formData.append('recipeImage', this.imgSource);
       }
 
-      formData.forEach((ele, key) => {
-        console.log(key + ' : ' + ele);
-      });
-
       if (this.id) {
         this.recipeService.updateRecipe(this.id, formData).subscribe({
           next: (res) => {

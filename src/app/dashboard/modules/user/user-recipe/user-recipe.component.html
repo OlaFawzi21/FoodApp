@@ -1,0 +1,161 @@
+<div class="recipe">
+  <div class="container">
+    <!-- Header and Search Section -->
+    <div
+      class="bg-second-color head row justify-content-around align-items-center rounded-4 py-3"
+    >
+      <div class="col-6">
+        <span class="fs-1 fw-bold">Recipes </span>
+        <span class="fs-1">Item</span>
+        <p class="fs-5">
+          You can now add your items that any user can order from the
+          Application and you can edit
+        </p>
+      </div>
+      <div class="col-3 text-end">
+        <img
+          class="w-100"
+          src="../../../../../assets/images/big-avatar.svg"
+          alt="home-img"
+        />
+      </div>
+    </div>
+
+    <!-- Recipes Table Header -->
+    <div class="row justify-content-between align-items-center my-4">
+      <div class="col-md-4">
+        <h4>Recipes Table Details</h4>
+        <p class="mb-0">You can check all details</p>
+      </div>
+    </div>
+
+    <!-- Search Field -->
+    <div class="row align-items-center mb-4">
+      <mat-form-field appearance="outline" class="col-6">
+        <mat-label>Search by name</mat-label>
+        <input
+          matInput
+          type="search"
+          placeholder="Search by name"
+          [(ngModel)]="searchName"
+          (keydown.enter)="getRecipes()"
+        />
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-hint class="second-color">Please press enter</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-3">
+        <mat-label>Tag Name</mat-label>
+        <mat-select [(ngModel)]="searchTag" (selectionChange)="getRecipes()">
+          <mat-option>All</mat-option>
+          <mat-option *ngFor="let tag of tags" [value]="tag.id">{{
+            tag.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-3">
+        <mat-label>Category Name</mat-label>
+        <mat-select
+          [(ngModel)]="searchCategory"
+          (selectionChange)="getRecipes()"
+        >
+          <mat-option>All</mat-option>
+          <mat-option *ngFor="let cat of categories" [value]="cat.id">{{
+            cat.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Table Section -->
+    <div class="table-responsive table-scroll">
+      <table class="table">
+        <thead>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Tag</th>
+          <th>Creation date</th>
+          <th>Modification date</th>
+          <th>Actions</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of list?.data">
+            <td>{{ item.name }}</td>
+            <td>
+              <img
+                *ngIf="item.imagePath !== ''; else img"
+                class="w-50"
+                height="50px"
+                [src]="'https://upskilling-egypt.com:3006/' + item.imagePath"
+                alt="img"
+              />
+              <ng-template #img>
+                <img
+                  class="w-50"
+                  height="50px"
+                  src="../../../../../assets/images/no-img.png"
+                  alt="no-img"
+                />
+              </ng-template>
+            </td>
+            <td>{{ item.description }}</td>
+            <td>
+              {{ item.price | currency:'EG'}}
+            </td>
+            <td>
+              <ng-container *ngIf="item.category.length > 0; else catList">
+                <span *ngFor="let cat of item.category; let isLast = last">
+                  {{ cat.name }}<span *ngIf="!isLast">,</span>
+                </span>
+              </ng-container>
+              <ng-template #catList>No Category</ng-template>
+            </td>
+            <td>{{ item.tag.name }}</td>
+            <td>{{ item.creationDate | date : "dd/MM/yyyy" }}</td>
+            <td>
+              {{ item.modificationDate | date : "dd/MM/yyyy" }}
+            </td>
+            <td>
+              <button
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                aria-label="Example icon-button with a menu"
+              >
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="openViewDialog(item)">
+                  <mat-icon class="second-color">visibility</mat-icon>
+                  <span class="second-color">View</span>
+                </button>
+                <button mat-menu-item (click)="addFav(item.id)">
+                  <mat-icon class="second-color">favorite</mat-icon>
+                  <span class="second-color">Add to Fav</span>
+                </button>
+              </mat-menu>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination Section -->
+    <mat-paginator
+      #paginator
+      class="demo-paginator"
+      (page)="handlePageEvent($event)"
+      [length]="list?.totalNumberOfRecords"
+      [pageSize]="pageSize"
+      [showFirstLastButtons]="showFirstLastButtons"
+      [pageSizeOptions]="pageSizeOptions"
+      [hidePageSize]="hidePageSize"
+      [pageIndex]="pageIndex"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </div>
+</div>

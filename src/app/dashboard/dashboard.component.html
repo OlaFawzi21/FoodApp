@@ -2,7 +2,7 @@
 <section class="container-fluid">
   <div class="row">
     <div [ngClass]="{'col-1': isSidebarCollapsed, 'col-2': !isSidebarCollapsed}" class="p-0">
-      <app-sidebar></app-sidebar>
+      <app-sidebar (toggle)="toggleSidebar($event)"></app-sidebar>
     </div>
     <div [ngClass]="{'col-11': isSidebarCollapsed, 'col-10': !isSidebarCollapsed}">
       <app-navbar></app-navbar>
@@ -10,6 +10,4 @@
     </div>
   </div>
 </section>
-
-<!-- <button (click)="toggleSidebar()">Toggle Sidebar</button> -->
 

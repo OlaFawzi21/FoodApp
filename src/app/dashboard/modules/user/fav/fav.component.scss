@@ -1,0 +1,31 @@
+.card {
+  border-radius: 20px;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  border: none;
+  overflow: hidden;
+
+  .img {
+    height: 260px;
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 2px 0px;
+  }
+
+  p{
+    color: #636363;
+  }
+
+  .icon{
+    top: 15px;
+    right: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+    cursor: pointer;
+  }
+}

@@ -1,13 +1,12 @@
 export interface Recipe {
   pageNumber: number;
   pageSize: number;
-  data: Item[];
+  data: RecipeItem[];
   totalNumberOfRecords: number;
   totalNumberOfPages: number;
 }
 
-
-export interface Item {
+export interface RecipeItem {
   id: number;
   name: string;
   imagePath: any;

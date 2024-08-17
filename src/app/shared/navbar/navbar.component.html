@@ -1,17 +1,12 @@
 <section
-  class="nav p-3 my-4 d-flex gap-5 justify-content-center align-items-center second-color"
+  class="nav p-3 my-4 d-flex gap-5 justify-content-end align-items-center second-color"
 >
-  <div class="position-relative w-75">
-    <input
-      type="search"
-      name="search"
-      class="form-control ps-5"
-      placeholder="Search here"
-    />
-    <i class="fa-solid fa-magnifying-glass position-absolute"></i>
-  </div>
   <div>
-    <img src="../../../assets/images/avatar.png" alt="avatar" />
+    <img
+      class="rounded-circle"
+      src="../../../assets/images/avatar.png"
+      alt="img"
+    />
     <span class="ms-3 fw-bold">{{ username }}</span>
   </div>
 
@@ -23,7 +18,7 @@
     <mat-icon>arrow_drop_down_circle</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item routerLink="/dashboard/profile">
       <mat-icon class="second-color">account_circle</mat-icon>
       <span class="second-color">Profile</span>
     </button>

@@ -4,7 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import { AdminGuard } from '../core/Guards/admin.guard';
 import { UserGuard } from '../core/Guards/user.guard';
 import { HomeComponent } from './components/home/home.component';
-import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -12,7 +12,7 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       { path: 'home', component: HomeComponent },
-      { path: 'changePassword', component: ChangePasswordComponent },
+      { path: 'profile', component: ProfileComponent },
       {
         path: 'admin',
         loadChildren: () =>

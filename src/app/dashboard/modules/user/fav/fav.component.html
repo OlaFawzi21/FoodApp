@@ -1,0 +1,74 @@
+<div class="recipe">
+  <div class="container">
+    <!-- Header and Search Section -->
+    <div
+      class="bg-second-color head row justify-content-around align-items-center rounded-4 py-3"
+    >
+      <div class="col-6">
+        <span class="fs-1 fw-bold">Favorites </span>
+        <span class="fs-1">Item</span>
+        <p class="fs-5">
+          You can now add your items that any user can order from the
+          Application and you can edit
+        </p>
+      </div>
+      <div class="col-3 text-end">
+        <img
+          class="w-100"
+          src="../../../../../assets/images/big-avatar.svg"
+          alt="home-img"
+        />
+      </div>
+    </div>
+
+    <div class="row my-5">
+      <div class="col-lg-4 col-5-md mb-4" *ngFor="let rec of recipes">
+        <div class="card position-relative">
+          <a class="position-absolute icon" (click)="onDeleteFav(rec.id)">
+            <mat-icon class="text-danger ">delete</mat-icon>
+          </a>
+          <div class="img">
+            <img
+              *ngIf="rec.recipe.imagePath !== ''; else img"
+              class="w-100 h-100"
+              [src]="
+                'https://upskilling-egypt.com:3006/' + rec.recipe.imagePath
+              "
+              alt="img"
+            />
+            <ng-template #img>
+              <img
+                class="w-100 h-100"
+                src="../../../../../assets/images/no-img.png"
+                alt="no-img"
+              />
+            </ng-template>
+          </div>
+          <div class="card-body">
+            <h5 class="mb-4">
+              {{ rec.recipe.name }}
+            </h5>
+            <p class="d-flex justify-content-between">
+              <span class="fw-bold">Tag</span>
+              <span>{{ rec.recipe.tag.name }}</span>
+            </p>
+            <p class="d-flex justify-content-between">
+              <span class="fw-bold">Category</span>
+              <span *ngFor="let cat of rec.recipe.category">
+                {{ cat.name }}
+              </span>
+            </p>
+            <p class="d-flex justify-content-between">
+              <span class="fw-bold">Description</span>
+              <span>{{ rec.recipe.description }}</span>
+            </p>
+            <p class="d-flex justify-content-between">
+              <span class="fw-bold">Price </span>
+              <span>{{ rec.recipe.price | currency:'EG'}}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

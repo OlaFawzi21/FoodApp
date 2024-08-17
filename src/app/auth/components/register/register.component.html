@@ -1,5 +1,5 @@
 <section
-  class="auth d-flex align-items-center justify-content-center position-relative"
+  class="auth d-flex align-items-center justify-content-center"
 >
   <div class="container">
     <div class="row">
@@ -9,26 +9,26 @@
             <img src="../../../../assets/images/logo.svg" alt="logo" />
           </div>
 
-          <div class="mb-4">
+          <div class="mb-5 position-relative">
             <h4>Register</h4>
             <p class="text-secondary">
               Welcome Back! Please enter your details
             </p>
-          </div>
 
-          <div class="drop-photo position-absolute">
-            <ngx-dropzone (change)="onSelect($event)" [multiple]="false">
-              <ngx-dropzone-label>Drop it!</ngx-dropzone-label>
-              <ngx-dropzone-image-preview
-                ngProjectAs="ngx-dropzone-preview"
-                *ngFor="let f of files"
-                [file]="f"
-                [removable]="true"
-                (removed)="onRemove(f)"
-              >
-                <ngx-dropzone-label></ngx-dropzone-label>
-              </ngx-dropzone-image-preview>
-            </ngx-dropzone>
+            <div class="drop-photo position-absolute">
+              <ngx-dropzone (change)="onSelect($event)" [multiple]="false">
+                <ngx-dropzone-label>Drop it!</ngx-dropzone-label>
+                <ngx-dropzone-image-preview
+                  ngProjectAs="ngx-dropzone-preview"
+                  *ngFor="let f of files"
+                  [file]="f"
+                  [removable]="true"
+                  (removed)="onRemove(f)"
+                >
+                  <ngx-dropzone-label></ngx-dropzone-label>
+                </ngx-dropzone-image-preview>
+              </ngx-dropzone>
+            </div>
           </div>
 
           <form

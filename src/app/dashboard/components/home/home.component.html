@@ -1,7 +1,7 @@
 <section class="home">
   <div class="container">
     <div
-      class="bg-second-color head-home row justify-content-evenly align-items-center rounded-4 py-3"
+      class="bg-second-color head row justify-content-evenly align-items-center rounded-4 py-3"
     >
       <div class="col-6">
         <span class="fs-1 fw-bold">Welcome </span>
@@ -20,6 +20,7 @@
       </div>
     </div>
     <div
+      *ngIf="role === 'SuperAdmin'"
       class="fill-recipe row justify-content-evenly align-items-center rounded-4 my-3 py-5"
     >
       <div class="col-6">
@@ -31,7 +32,10 @@
         </p>
       </div>
       <div class="col-3">
-        <button class="btn-main fw-bold w-100">
+        <button
+          class="btn-main fw-bold w-100"
+          routerLink="/dashboard/admin/recipe"
+        >
           Fill Recipes
           <span class="ms-2"><i class="fa-solid fa-arrow-right-long"></i></span>
         </button>

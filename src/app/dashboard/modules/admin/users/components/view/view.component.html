@@ -1,0 +1,71 @@
+<section class="position-relative second-color">
+  <div class="container">
+    <div class="row p-5 justify-content-between">
+      <div class="col-12">
+        <h3 class="text-uppercase mb-3">User Details</h3>
+      </div>
+      <div
+        class="col-12 d-flex justify-content-between align-items-center mb-5"
+      >
+        <div class="line"></div>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <div class="col-4">
+        <img
+          *ngIf="data.imagePath !== null; else img"
+          class="w-100 rounded-circle"
+          height="300px"
+          [src]="'https://upskilling-egypt.com:3006/' + data.imagePath"
+          alt="img"
+        />
+        <ng-template #img>
+          <img
+            class="w-100 rounded-circle"
+            height="300px"
+            src="../../../../../assets/images/no-img.png"
+            alt="no-img"
+          />
+        </ng-template>
+      </div>
+      <table class="col-7">
+        <tr>
+          <td class="fw-bold fs-5">Username:</td>
+          <td>{{ data.userName }}</td>
+        </tr>
+
+        <tr>
+          <td class="fw-bold fs-5">Email:</td>
+          <td>{{ data.email }}</td>
+        </tr>
+        <tr>
+          <td class="fw-bold fs-5">Phone number:</td>
+          <td>{{ data.phoneNumber }}</td>
+        </tr>
+        <tr>
+          <td class="fw-bold fs-5">Country:</td>
+          <td>{{ data.country }}</td>
+        </tr>
+        <tr>
+          <td class="fw-bold fs-5">Role:</td>
+          <td>{{ data.group.name }}</td>
+        </tr>
+        <tr>
+          <td class="fw-bold fs-5">Creation date:</td>
+          <td>{{ data.creationDate }}</td>
+        </tr>
+        <tr>
+          <td class="fw-bold fs-5">Modification date:</td>
+          <td>{{ data.modificationDate }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div
+    class="position-absolute btn-cancel cursor-pointer"
+    (click)="onNoClick()"
+  >
+    <mat-icon matSuffix>close</mat-icon>
+  </div>
+</section>

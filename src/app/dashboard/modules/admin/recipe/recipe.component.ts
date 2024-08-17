@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { RecipeService } from './services/recipe.service';
-import { Item, Recipe } from './interfaces/recipe';
+import { Recipe } from './interfaces/recipe';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { DeleteComponent } from 'src/app/shared/delete/delete.component';

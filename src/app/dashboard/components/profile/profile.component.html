@@ -1,0 +1,150 @@
+<section class="profile">
+  <div class="container">
+    <div
+      class="bg-color second-color row justify-content-evenly align-items-center rounded-4 py-3"
+      *ngIf="data"
+    >
+      <div class="col-6">
+        <span class="fs-1 fw-bold">Welcome </span>
+        <span class="fs-1">{{ data.userName }}</span>
+        <p class="fs-5">
+          Here you can view and update your rental details. Make sure your
+          information is up-to-date for a smooth renting experience.
+        </p>
+      </div>
+      <div class="col-2">
+        <img
+          *ngIf="data.imagePath !== ''; else img"
+          class="w-100 rounded-circle border border-3 border-white"
+          height="200px"
+          [src]="'https://upskilling-egypt.com:3006/' + data.imagePath"
+          alt="img"
+        />
+        <ng-template #img>
+          <img
+            class="w-100"
+            height="200px"
+            src="../../../../assets/images/no-img.png"
+            alt="no-img"
+          />
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <form
+    [formGroup]="formProfile"
+    class="d-flex flex-column align-items-center justify-content-center my-5"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="w-75 row gap-2 justify-content-center">
+      <div class="row p-0">
+        <mat-form-field class="col-6">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="userName" placeholder="user name" />
+          <mat-error *ngIf="formProfile.get('userName')?.hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-6">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            matInput
+            formControlName="email"
+            placeholder="Email"
+          />
+          <mat-error *ngIf="formProfile.get('email')?.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="formProfile.get('email')?.hasError('email')">
+            Email is <strong>invalid</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row p-0">
+        <mat-form-field class="col-6">
+          <mat-label>Phone Number</mat-label>
+          <input
+            matInput
+            formControlName="phoneNumber"
+            placeholder="Phone number"
+          />
+          <mat-error
+            *ngIf="formProfile.get('phoneNumber')?.hasError('required')"
+          >
+            Phone Number is <strong>required</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="formProfile.get('phoneNumber')?.hasError('pattern')"
+          >
+            Phone Number is <strong>invalid</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-6">
+          <mat-label>Country</mat-label>
+          <input matInput formControlName="country" placeholder="Country" />
+          <mat-error *ngIf="formProfile.get('country')?.hasError('required')">
+            country is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field class="col-12">
+        <mat-label>Confirm Password</mat-label>
+        <input
+          matInput
+          [type]="isHideConfirm?'password' : 'text' "
+          formControlName="confirmPassword"
+          placeholder="confirmPassword"
+        />
+        <mat-icon matSuffix (click)="isHideConfirm = !isHideConfirm">{{
+          isHideConfirm ? "visibility_off" : "visibility"
+        }}</mat-icon>
+        <mat-error
+          *ngIf="formProfile.get('confirmPassword')?.hasError('required')"
+        >
+          confirm Password is <strong>required</strong>
+        </mat-error>
+        <mat-error
+          *ngIf="formProfile.get('confirmPassword')?.hasError('minlength')"
+        >
+          confirm Password must be at least 6 characters long.
+        </mat-error>
+      </mat-form-field>
+
+      <div class="mb-4">
+        <ngx-dropzone (change)="onSelect($event)">
+          <ngx-dropzone-label>
+            <p class="second-color fs-4">
+              <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            </p>
+            Drag & Drop or
+            <span class="second-color">Choose a Item Image</span> to Upload
+          </ngx-dropzone-label>
+          <ngx-dropzone-image-preview
+            ngProjectAs="ngx-dropzone-preview"
+            *ngFor="let f of files"
+            [file]="f"
+            [removable]="true"
+            (removed)="onRemove(f)"
+          >
+            <ngx-dropzone-label></ngx-dropzone-label>
+          </ngx-dropzone-image-preview>
+        </ngx-dropzone>
+      </div>
+
+      <div class="text-end">
+        <button
+          class="btn btn-main fw-bold w-25 py-2"
+          type="submit"
+          [disabled]="formProfile.invalid"
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  </form>
+</section>

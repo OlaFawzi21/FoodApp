@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/auth/services/auth.service';
+import { LogoutService } from '../services/logout.service';
 
-@Component( {
+@Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
-} )
+  styleUrls: ['./navbar.component.scss'],
+})
 export class NavbarComponent {
+  username = localStorage.getItem('userName');
 
-  username = localStorage.getItem( 'userName' );
-
-  constructor( private authService: AuthService ) { }
+  constructor(
+    private logoutService: LogoutService,
+  ) { }
+  
   logout() {
-    this.authService.logout();
+    this.logoutService.OpenLogoutDialog();
   }
+
 }

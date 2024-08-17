@@ -1,7 +1,7 @@
 <section class="bg-main-color side-bar overflow-hidden">
-  <div class="text-center">
+  <div class="text-center" (click)="sendData()">
     <img
-      class="m-5"
+      class="my-5"
       src="../../../assets/images/logo-without-words.png"
       alt="logo"
     />
@@ -11,12 +11,13 @@
       <a
         *ngIf="item.isActive"
         class="item py-3 px-4"
+        [class]="toggler ? 'justify-content-center' : null"
         [routerLink]="item.link"
         routerLinkActive="active"
-        (click)="item.title === 'Logout' ? logout() : null"
+        (click)="handleClick(item.action!)"
       >
         <span><i [class]="item.icon"></i></span>
-        <span>{{ item.title }}</span>
+        <span *ngIf="!toggler">{{ item.title }}</span>
       </a>
     </ng-container>
   </div>

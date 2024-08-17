@@ -19,7 +19,7 @@ export class LoginComponent {
   constructor(private _AuthService: AuthService ,private toastr: ToastrService , private router:Router) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(8)])
+      password: new FormControl('', [Validators.required, Validators.minLength(6)])
     } );
   }
 

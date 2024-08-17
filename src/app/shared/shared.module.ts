@@ -16,7 +16,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { DeleteComponent } from './delete/delete.component';
 import { SpinnerComponent } from './spinner/spinner.component';
-
+import { ChangePassComponent } from './chnage-pass/change-pass.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LogoutComponent } from './logout/logout.component';
 @NgModule({
   declarations: [
     SharedComponent,
@@ -24,6 +26,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     SidebarComponent,
     DeleteComponent,
     SpinnerComponent,
+    ChangePassComponent,
+    LogoutComponent,
   ],
   imports: [
     CommonModule,
@@ -39,6 +43,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatIconModule,
     MatSelectModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     NavbarComponent,
@@ -56,6 +61,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatIconModule,
     MatSelectModule,
     ReactiveFormsModule,
+    SpinnerComponent,
+    MatProgressSpinnerModule
   ],
 })
 export class SharedModule {}
