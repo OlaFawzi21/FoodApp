@@ -90,13 +90,15 @@
             <td>
               <img
                 *ngIf="item.imagePath !== null; else img"
-                class="w-50" height="50px"
+                class="w-50"
+                height="50px"
                 [src]="'https://upskilling-egypt.com:3006/' + item.imagePath"
                 alt="img"
               />
               <ng-template #img>
                 <img
-                  class="w-50" height="50px"
+                  class="w-50"
+                  height="50px"
                   src="../../../../../assets/images/no-img.png"
                   alt="no-img"
               /></ng-template>
@@ -106,7 +108,7 @@
               {{ item.phoneNumber }}
             </td>
             <td>{{ item.country }}</td>
-            <td>{{ item.group.id === 1? 'Admin':'User' }}</td>
+            <td>{{ item.group.id === 1 ? "Admin" : "User" }}</td>
             <td>{{ item.creationDate | date : "dd/MM/yyyy" }}</td>
             <td>
               {{ item.modificationDate | date : "dd/MM/yyyy" }}
@@ -133,6 +135,14 @@
           </tr>
         </tbody>
       </table>
+
+      <div class="text-center">
+        <img
+          src="../../../../../assets/images/nodata.svg"
+          alt="no-data"
+          *ngIf="list?.data?.length == 0"
+        />
+      </div>
     </div>
 
     <!-- Pagination Section -->

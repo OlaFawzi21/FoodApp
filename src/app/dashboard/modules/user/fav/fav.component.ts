@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./fav.component.scss'],
 })
 export class FavComponent {
-  data: Fav;
+  data?: Fav;
   recipes: FavData[];
 
   length = 50;
@@ -33,13 +33,18 @@ export class FavComponent {
   }
 
   getFav() {
-    this.favService.onViewFav().subscribe({
-      next: (res) => {
-        this.data = res;
-        this.recipes = this.data.data;
-        console.log(this.data);
-      },
-    });
+    this.favService
+      .onViewFav({
+        pageSize: this.pageSize,
+        pageNumber: this.pageIndex + 1,
+      })
+      .subscribe({
+        next: (res) => {
+          this.data = res;
+          this.recipes = res.data;
+          console.log(this.data);
+        },
+      });
   }
 
   onDeleteFav(id: number) {
@@ -51,7 +56,7 @@ export class FavComponent {
         this.toastr.error(err.message, 'Error');
       },
       complete: () => {
-        this.toastr.success( 'Removed from fav successful', 'Success' );
+        this.toastr.success('Removed from fav successful', 'Success');
         this.getFav();
       },
     });

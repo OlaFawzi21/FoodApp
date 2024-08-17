@@ -93,13 +93,15 @@
             <td>
               <img
                 *ngIf="item.imagePath !== ''; else img"
-                class="w-50" height="50px"
+                class="w-50"
+                height="50px"
                 [src]="'https://upskilling-egypt.com:3006/' + item.imagePath"
                 alt="img"
               />
               <ng-template #img>
-                <img 
-                  class="w-50" height="50px"
+                <img
+                  class="w-50"
+                  height="50px"
                   src="../../../../../assets/images/no-img.png"
                   alt="no-img"
                 />
@@ -107,7 +109,7 @@
             </td>
             <td>{{ item.description }}</td>
             <td>
-              {{ item.price | currency:'EG'}}
+              {{ item.price | currency : "EG" }}
             </td>
             <td>
               <ng-container *ngIf="item.category.length > 0; else catList">
@@ -148,6 +150,14 @@
           </tr>
         </tbody>
       </table>
+
+      <div class="text-center">
+        <img
+          src="../../../../../assets/images/nodata.svg"
+          alt="no-data"
+          *ngIf="list?.data?.length == 0"
+        />
+      </div>
     </div>
 
     <!-- Pagination Section -->

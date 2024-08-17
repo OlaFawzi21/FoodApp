@@ -25,7 +25,7 @@
       <div class="col-lg-4 col-5-md mb-4" *ngFor="let rec of recipes">
         <div class="card position-relative">
           <a class="position-absolute icon" (click)="onDeleteFav(rec.id)">
-            <mat-icon class="text-danger ">delete</mat-icon>
+            <mat-icon class="text-danger">delete</mat-icon>
           </a>
           <div class="img">
             <img
@@ -64,11 +64,25 @@
             </p>
             <p class="d-flex justify-content-between">
               <span class="fw-bold">Price </span>
-              <span>{{ rec.recipe.price | currency:'EG'}}</span>
+              <span>{{ rec.recipe.price | currency : "EG" }}</span>
             </p>
           </div>
         </div>
       </div>
     </div>
+
+    <mat-paginator
+      #paginator
+      class="demo-paginator"
+      (page)="handlePageEvent($event)"
+      [length]="data?.totalNumberOfRecords"
+      [pageSize]="pageSize"
+      [showFirstLastButtons]="showFirstLastButtons"
+      [pageSizeOptions]="pageSizeOptions"
+      [hidePageSize]="hidePageSize"
+      [pageIndex]="pageIndex"
+      aria-label="Select page"
+    >
+    </mat-paginator>
   </div>
 </div>

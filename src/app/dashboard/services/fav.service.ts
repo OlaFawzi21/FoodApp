@@ -16,7 +16,7 @@ export class FavService {
     return this.http.delete(`userRecipe/${id}`);
   }
 
-  onViewFav(): Observable<any> {
-    return this.http.get('userRecipe');
+  onViewFav(myParams: any): Observable<any> {
+    return this.http.get('userRecipe', { params: myParams });
   }
 }

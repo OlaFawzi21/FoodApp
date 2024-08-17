@@ -95,6 +95,14 @@
           </tr>
         </tbody>
       </table>
+
+      <div class="text-center">
+        <img
+          src="../../../../../assets/images/nodata.svg"
+          alt="no-data"
+          *ngIf="list?.data?.length == 0"
+        />
+      </div>
     </div>
 
     <mat-paginator
