@@ -1,13 +1,24 @@
-
 <section class="container-fluid">
   <div class="row">
-    <div [ngClass]="{'col-1': isSidebarCollapsed, 'col-2': !isSidebarCollapsed}" class="p-0">
+    <div
+      [ngClass]="{
+        'col-1': isSidebarCollapsed,
+        'col-lg-2': !isSidebarCollapsed,
+        'col-md-3': !isSidebarCollapsed
+      }"
+      class="p-0"
+    >
       <app-sidebar (toggle)="toggleSidebar($event)"></app-sidebar>
     </div>
-    <div [ngClass]="{'col-11': isSidebarCollapsed, 'col-10': !isSidebarCollapsed}">
+    <div
+      [ngClass]="{
+        'col-11': isSidebarCollapsed,
+        'col-lg-10': !isSidebarCollapsed,
+        'col-md-9': !isSidebarCollapsed
+      }"
+    >
       <app-navbar></app-navbar>
       <router-outlet></router-outlet>
     </div>
   </div>
 </section>
-
