@@ -60,7 +60,7 @@ export class UsersComponent {
     const dialogRef = this.dialog.open(ViewComponent, {
       data: user,
       width: '60%',
-    } );
+    });
   }
 
   getUsers() {
@@ -112,5 +112,12 @@ export class UsersComponent {
         .split(',')
         .map((str) => +str);
     }
+  }
+
+  onReset() {
+    this.search = '';
+    this.searchType = '';
+    this.role = '';
+    this.getUsers();
   }
 }

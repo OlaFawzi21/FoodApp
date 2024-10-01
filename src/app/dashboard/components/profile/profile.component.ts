@@ -14,7 +14,7 @@ export class ProfileComponent {
   data: Profile;
   files: File[] = [];
   imgSource: any;
-
+x =0
   isHideConfirm: boolean = true;
 
   formProfile = new FormGroup({
@@ -34,7 +34,9 @@ export class ProfileComponent {
   constructor(
     private profileService: ProfileService,
     private toastr: ToastrService,
-  ) {}
+  ) {
+    this.x.toString()
+  }
 
   ngOnInit() {
     this.getProfile();

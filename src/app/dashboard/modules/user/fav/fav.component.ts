@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FavService } from 'src/app/dashboard/services/fav.service';
-import { Recipe, RecipeItem } from '../../admin/recipe/interfaces/recipe';
+import { FavService } from 'src/app/dashboard/modules/user/fav/services/fav.service';
 import { PageEvent } from '@angular/material/paginator';
 import { Fav, FavData } from './interfaces/fav';
 import { ToastrService } from 'ngx-toastr';

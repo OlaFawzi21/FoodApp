@@ -124,7 +124,8 @@
         <button
           class="btn btn-main fw-bold w-25 py-2"
           type="submit"
-          [disabled]="formRecipe.invalid || isViewMode"
+          [disabled]="formRecipe.invalid"
+          *ngIf="!isViewMode"
         >
           Submit
         </button>

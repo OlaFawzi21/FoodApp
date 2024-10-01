@@ -68,6 +68,13 @@
           <mat-option value="2">User</mat-option>
         </mat-select>
       </mat-form-field>
+      <div
+        class="d-flex justify-content-end align-items-center"
+        *ngIf="searchType != '' || search != '' || role != ''"
+      >
+        <mat-icon matSuffix class="second-color">restart_alt</mat-icon>
+        <a class="cursor-pointer second-color" (click)="onReset()">Reset</a>
+      </div>
     </div>
 
     <!-- Table Section -->

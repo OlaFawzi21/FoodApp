@@ -32,12 +32,6 @@ export class SidebarComponent {
       isActive: true,
     },
     {
-      title: 'Users',
-      icon: 'fa-solid fa-user-group',
-      link: '/dashboard/admin/users',
-      isActive: this.isAdmin(),
-    },
-    {
       title: 'Categories',
       icon: 'fa-regular fa-calendar-days',
       link: '/dashboard/admin/categories',
@@ -60,6 +54,12 @@ export class SidebarComponent {
       icon: 'fa-solid fa-heart',
       link: '/dashboard/user/fav',
       isActive: this.isUser(),
+    },
+    {
+      title: 'Users',
+      icon: 'fa-solid fa-user-group',
+      link: '/dashboard/admin/users',
+      isActive: this.isAdmin(),
     },
     {
       title: 'Change Password',

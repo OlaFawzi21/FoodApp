@@ -144,7 +144,6 @@ a {
 
     td,
     th {
-      width: 300px !important;
       vertical-align: middle !important;
       text-align: center !important;
     }
@@ -176,4 +175,9 @@ a {
 
 ::placeholder {
   font-size: 14px;
+}
+
+.mdc-text-field--filled.mdc-text-field--disabled .mdc-text-field__input ,
+.mat-mdc-select-disabled {
+  color: #333 !important;
 }

@@ -8,8 +8,13 @@ ngx-dropzone {
   padding-left: 4px;
   background-color: #e8ffe6 !important;
   border-color: #2d6e27 !important;
+  justify-content: center;
 }
 
 ngx-dropzone-image-preview {
   margin: 0 !important;
+}
+
+.ngx-dz-disabled{
+  opacity: 1 !important;
 }

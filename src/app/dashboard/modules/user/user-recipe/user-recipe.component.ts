@@ -6,7 +6,7 @@ import { RecipeService } from '../../admin/recipe/services/recipe.service';
 import { CategoryService } from '../../admin/categories/services/category.service';
 import { Recipe, RecipeItem } from '../../admin/recipe/interfaces/recipe';
 import { ViewComponent } from './components/view/view.component';
-import { FavService } from 'src/app/dashboard/services/fav.service';
+import { FavService } from 'src/app/dashboard/modules/user/fav/services/fav.service';
 
 @Component({
   selector: 'app-user-recipe',

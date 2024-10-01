@@ -119,7 +119,6 @@ export class RecipeComponent {
       },
       complete: () => {
         this.toastr.success('Deleted Successful', 'Success');
-        this.getCategories();
       },
     });
   }
@@ -139,5 +138,12 @@ export class RecipeComponent {
         .split(',')
         .map((str) => +str);
     }
+  }
+
+  onReset() {
+    this.searchName = '';
+    this.searchTag = '';
+    this.searchCategory = '';
+    this.getRecipes();
   }
 }
